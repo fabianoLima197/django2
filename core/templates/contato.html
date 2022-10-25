@@ -1,10 +1,25 @@
 <!DOCTYPE html>
+{% load bootstrap5 %}
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Contato</title>
+    {% bootstrap_css %}
 </head>
 <body>
-    <h1>Contato</h1>
+    <div class="container">
+        <h1>Contato</h1>
+        {% bootstrap_messages %}
+
+        <form action="{% url 'contato' %}" method="post" class=form" autocomplete="off">
+            {% csrf_token %}
+            {% bootstrap_form fomr%}
+            {% button %}
+                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+            {% endbutton%}
+        </form>
+
+    </div>
+{% bootstrap_javascript jquery='full' %}
 </body>
 </html>
