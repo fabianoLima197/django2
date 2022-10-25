@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 from os import path
 from pathlib import Path
+import MySQLdb
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,14 +79,27 @@ WSGI_APPLICATION = 'django2_1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+'''def conectar():
+    try:
+        conn = MySQLdb.connect(
+            db='django2',
+            host='127.0.0.1',
+            user='root',
+            passwd='root',
+        )
+        return conn
+    except MySQLdb.Error as e:
+        print(f'erro na conexar: {e}')
+
+conectar()'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': BASE_DIR / 'django2',
         'USER': 'root',
-        'PASSWORS': 'root',
-        'HOST': 'localhost',
-        'PORT': '3306'
+        'passwd': 'root',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 

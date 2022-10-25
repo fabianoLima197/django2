@@ -1,0 +1,7 @@
+Ubuntu - linux
+sudo apt.get install libmysql -dev python3-dev
+
+no Mac
+brew isntall mysql-connector -c
+
+Windows ja deve ta tudo instalado ...
