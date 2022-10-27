@@ -13,6 +13,12 @@ from os import path
 from pathlib import Path
 import MySQLdb
 import os
+import dj_database_url
+
+#usando postgreeSQL com o heroku
+DATABASES = {
+    'default': dj_database_url.config
+}
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-a_h&4v=s47a4l@13yvaq&c+0k-+g=$3y&o@q^h1ye&ns(*dw1s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -46,7 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    #'whitenoise.middlware.WhiteNoiseMiddleware',
+    'whitenoise.middlware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -91,7 +97,7 @@ WSGI_APPLICATION = 'django2_1.wsgi.application'
     except MySQLdb.Error as e:
         print(f'erro na conexar: {e}')
 
-conectar()'''
+conectar()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -101,7 +107,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306'
     }
-}
+}'''
 
 
 # Password validation
@@ -135,11 +141,14 @@ USE_I18N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
